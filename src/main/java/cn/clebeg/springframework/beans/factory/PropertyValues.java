@@ -7,7 +7,7 @@ import java.util.List;
  * @author clebegxie
  */
 public class PropertyValues extends PropertyValue {
-    private List<PropertyValue> propertyValueList = new ArrayList<>();
+    private final List<PropertyValue> propertyValueList = new ArrayList<>();
 
     public void addPropertyValue(PropertyValue pv) {
         propertyValueList.add(pv);

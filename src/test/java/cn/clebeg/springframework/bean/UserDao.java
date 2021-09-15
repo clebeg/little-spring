@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserDao {
-    private static Map<String, Integer> userInfo = new HashMap<>();
+    private static final Map<String, Integer> userInfo = new HashMap<>();
 
     static {
         userInfo.put("u1", 18);

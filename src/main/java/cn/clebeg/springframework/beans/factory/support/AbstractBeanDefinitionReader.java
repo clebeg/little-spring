@@ -9,7 +9,7 @@ import cn.clebeg.springframework.core.io.ResourceLoader;
 public abstract class AbstractBeanDefinitionReader implements BeanDefinitionReader {
     private final BeanDefinitionRegistry registry;
 
-    private ResourceLoader resourceLoader;
+    private final ResourceLoader resourceLoader;
 
     protected AbstractBeanDefinitionReader(BeanDefinitionRegistry registry) {
         this(registry, null);
