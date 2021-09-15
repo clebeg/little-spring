@@ -16,9 +16,9 @@ public interface InstantiationStrategy {
      * @param beanDefinition bean definition
      * @param constructor constructor
      * @param args bean input args
-     * @return
-     * @throws BeansException
+     * @return instantiate object
+     * @throws BeansException beans exception
      */
     Object instantiate(String beanName, BeanDefinition beanDefinition,
-            Constructor constructor, Object[] args) throws BeansException;
+            Constructor<?> constructor, Object[] args) throws BeansException;
 }

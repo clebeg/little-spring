@@ -8,8 +8,8 @@ public interface ResourceLoader {
 
     /**
      * 获取资源文件，通过 location
-     * @param location
-     * @return
+     * @param location resource location
+     * @return resource
      */
     Resource getResource(String location);
 }

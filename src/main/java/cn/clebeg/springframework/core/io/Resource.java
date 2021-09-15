@@ -12,7 +12,7 @@ public interface Resource {
     /**
      * 获取资源文件的输入流。
      * @return 资源文件的输入流
-     * @throws IOException
+     * @throws IOException io exception
      */
     InputStream getInputStream() throws IOException;
 }

@@ -22,9 +22,7 @@ abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
             bean = beanDefinition.getBeanClass().newInstance();
             // 通过bean的定义来补充属性值
             applyPropertyValues(beanName, bean, beanDefinition);
-        } catch (InstantiationException e) {
-            throw new BeansException("get bean class new instance by bean definition error, " + e.getMessage(), e);
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             throw new BeansException("get bean class new instance by bean definition error, " + e.getMessage(), e);
         }
 
@@ -67,17 +65,17 @@ abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
     }
 
     protected Object createBeanInstance(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException {
-        Constructor constructor = null;
-        Class beanClass = beanDefinition.getBeanClass();
-        Constructor[] constructors = beanClass.getConstructors();
-        for (Constructor ctor : constructors) {
-            Class[] parameterTypes = ctor.getParameterTypes();
+        Constructor<?> constructor = null;
+        Class<?> beanClass = beanDefinition.getBeanClass();
+        Constructor<?>[] constructors = beanClass.getConstructors();
+        for (Constructor<?> ctor : constructors) {
+            Class<?>[] parameterTypes = ctor.getParameterTypes();
             if (parameterTypes.length != args.length) {
                 continue;
             }
             boolean match = true;
             for (int i = 0; i < parameterTypes.length; i++) {
-                Class compare = parameterTypes[i];
+                Class<?> compare = parameterTypes[i];
                 if (compare.isPrimitive()) {
                     compare = ClassUtils.primitiveToWrapper(compare);
                 }

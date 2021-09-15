@@ -20,7 +20,7 @@ public class TestBean {
     }
 
     public void sayHello() {
-        System.out.println(String.format("hello, every one, my name is %s, my age is %d, you hobby is %s", name, age, hobby));
+        System.out.printf("hello, every one, my name is %s, my age is %d, you hobby is %s\n", name, age, hobby);
     }
 
     public Integer queryUserAge() {

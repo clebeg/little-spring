@@ -18,13 +18,13 @@ public class SimpleInstantiationStrategy implements InstantiationStrategy {
      * @param beanDefinition bean definition
      * @param constructor constructor
      * @param args bean input args
-     * @return
-     * @throws BeansException
+     * @return instantiate object
+     * @throws BeansException beans exception
      */
     @Override
     public Object instantiate(String beanName, BeanDefinition beanDefinition,
-            Constructor constructor, Object[] args) throws BeansException {
-        Class beanClass = beanDefinition.getBeanClass();
+            Constructor<?> constructor, Object[] args) throws BeansException {
+        Class<?> beanClass = beanDefinition.getBeanClass();
 
         try {
             if (null == constructor) {
