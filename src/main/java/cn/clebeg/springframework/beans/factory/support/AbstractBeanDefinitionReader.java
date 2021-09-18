@@ -1,6 +1,5 @@
 package cn.clebeg.springframework.beans.factory.support;
 
-import cn.clebeg.springframework.core.io.DefaultResourceLoader;
 import cn.clebeg.springframework.core.io.ResourceLoader;
 
 /**
@@ -15,8 +14,7 @@ public abstract class AbstractBeanDefinitionReader implements BeanDefinitionRead
         this(registry, null);
     }
 
-    public AbstractBeanDefinitionReader(BeanDefinitionRegistry registry,
-            ResourceLoader resourceLoader) {
+    public AbstractBeanDefinitionReader(BeanDefinitionRegistry registry, ResourceLoader resourceLoader) {
         this.registry = registry;
         this.resourceLoader = resourceLoader;
     }

@@ -18,5 +18,6 @@ public class BeanFactoryFromXMLTest {
         testBean.sayHello();
 
         System.out.println(testBean.queryUserAge());
+
     }
 }
