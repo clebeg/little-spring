@@ -41,28 +41,6 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     }
 
     @Override
-    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) throws BeansException {
-
-    }
-
-
-    @Override
-    public <T> T getBean(String beanName, Class<T> classOfType) throws BeansException {
-        List<String> beanNames = new ArrayList<>();
-        for (Map.Entry<String, BeanDefinition> kv : beanDefinitionMap.entrySet()) {
-            BeanDefinition beanDefinition = kv.getValue();
-            if (classOfType.isAssignableFrom(beanDefinition.getBeanClass())) {
-                beanNames.add(kv.getKey());
-            }
-        }
-        if (beanNames.size() == 1) {
-            return getBean(beanNames.get(0), classOfType);
-        }
-
-        throw new BeansException("expect one object for: " + classOfType + ", but find " + beanNames.size() + ": " + beanNames);
-    }
-
-    @Override
     public <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException {
         Map<String, T> res = new HashMap<>();
         beanDefinitionMap.forEach((beanName, beanDefinition) -> {

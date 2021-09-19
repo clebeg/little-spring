@@ -2,40 +2,53 @@ package cn.clebeg.springframework.beans.factory.support;
 
 import cn.clebeg.springframework.beans.BeansException;
 import cn.clebeg.springframework.beans.factory.BeanFactory;
+import cn.clebeg.springframework.beans.factory.ConfigurableListableBeanFactory;
 import cn.clebeg.springframework.beans.factory.config.BeanDefinition;
+import cn.clebeg.springframework.beans.factory.config.BeanPostProcessor;
+import cn.clebeg.springframework.beans.factory.config.ConfigurableBeanFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author clebegxie
  */
-abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
-    @Override
-    public <T> T getBean(String beanName, Class<T> classOfType) throws BeansException {
-        return (T) getBean(beanName);
-    }
+abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     @Override
     public Object getBean(String beanName) {
-        Object singleton = getSingleton(beanName);
-        if (singleton != null) {
-            return singleton;
-        }
-
-        // 根据类名称生成类定义
-        BeanDefinition beanDefinition = getBeanDefinition(beanName);
-
-        return createBean(beanName, beanDefinition);
+        return doGetBean(beanName, null);
     }
 
     @Override
     public Object getBean(String beanName, Object... args) throws BeansException {
-        Object singleton = getSingleton(beanName);
-        if (singleton != null) {
-            return singleton;
+        return doGetBean(beanName, args);
+    }
+
+    @Override
+    public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
+        return (T) getBean(name);
+    }
+
+    protected <T> T doGetBean(final String name, final Object[] args) {
+        Object bean = getSingleton(name);
+        if (bean != null) {
+            return (T) bean;
         }
 
-        // 根据类名称生成类定义
-        BeanDefinition beanDefinition = getBeanDefinition(beanName);
-        return createBean(beanName, beanDefinition, args);
+        BeanDefinition beanDefinition = getBeanDefinition(name);
+        return (T) createBean(name, beanDefinition, args);
+    }
+
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
+        beanPostProcessors.remove(beanPostProcessor);
+        beanPostProcessors.add(beanPostProcessor);
+    }
+
+    public List<BeanPostProcessor> getBeanPostProcessors() {
+        return beanPostProcessors;
     }
 
     /**
@@ -45,15 +58,6 @@ abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implemen
      * @throws BeansException beans exception
      */
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
-
-    /**
-     * 根据bean的定义产生对象，并且放入到单例中.
-     * @param beanDefinition bean definition
-     * @param beanName name of bean
-     * @return bean Object
-     * @throws BeansException beans exception
-     */
-    protected abstract Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException;
 
     /**
      * 根据bean的定义产生对象，并且放入到单例中.

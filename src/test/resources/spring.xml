@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans>
+    <bean id="userDao" class="cn.clebeg.springframework.bean.UserDao" />
+    <bean id="testBean" class="cn.clebeg.springframework.bean.TestBean">
+        <property name="name" value="u3" />
+        <property name="age" value="20" />
+        <property name="hobby" value="basketball" />
+        <property name="userDao" ref="userDao" />
+    </bean>
+</beans>
