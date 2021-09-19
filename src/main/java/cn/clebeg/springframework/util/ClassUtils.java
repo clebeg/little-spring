@@ -1,4 +1,4 @@
-package cn.clebeg.springframework.utils;
+package cn.clebeg.springframework.util;
 
 import cn.hutool.core.util.ClassLoaderUtil;
 

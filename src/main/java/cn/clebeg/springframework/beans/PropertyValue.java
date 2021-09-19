@@ -1,4 +1,4 @@
-package cn.clebeg.springframework.beans.factory;
+package cn.clebeg.springframework.beans;
 
 /**
  * @author clebegxie

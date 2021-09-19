@@ -1,6 +1,6 @@
 package cn.clebeg.springframework.core.io;
 
-import cn.clebeg.springframework.utils.ClassUtils;
+import cn.clebeg.springframework.util.ClassUtils;
 import cn.hutool.core.lang.Assert;
 import java.io.FileNotFoundException;
 import java.io.IOException;

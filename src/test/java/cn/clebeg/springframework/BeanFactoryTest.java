@@ -1,8 +1,8 @@
 package cn.clebeg.springframework;
 
 import cn.clebeg.springframework.bean.TestBean;
-import cn.clebeg.springframework.beans.factory.PropertyValue;
-import cn.clebeg.springframework.beans.factory.PropertyValues;
+import cn.clebeg.springframework.beans.PropertyValue;
+import cn.clebeg.springframework.beans.PropertyValues;
 import cn.clebeg.springframework.beans.factory.config.BeanDefinition;
 import cn.clebeg.springframework.beans.factory.support.DefaultListableBeanFactory;
 

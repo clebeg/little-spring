@@ -1,6 +1,6 @@
 package cn.clebeg.springframework.beans.factory.config;
 
-import cn.clebeg.springframework.beans.factory.PropertyValues;
+import cn.clebeg.springframework.beans.PropertyValues;
 
 /**
  * 使用 class 直接定义 bean，通过框架来实例化 bean 对象.

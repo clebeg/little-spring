@@ -1,7 +1,7 @@
 package cn.clebeg.springframework.beans.factory.xml;
 
 import cn.clebeg.springframework.beans.BeansException;
-import cn.clebeg.springframework.beans.factory.PropertyValue;
+import cn.clebeg.springframework.beans.PropertyValue;
 import cn.clebeg.springframework.beans.factory.config.BeanDefinition;
 import cn.clebeg.springframework.beans.factory.config.BeanReference;
 import cn.clebeg.springframework.beans.factory.support.AbstractBeanDefinitionReader;
