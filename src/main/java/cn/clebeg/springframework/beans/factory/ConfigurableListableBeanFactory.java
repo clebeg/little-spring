@@ -7,7 +7,7 @@ import cn.clebeg.springframework.beans.factory.config.BeanPostProcessor;
 /**
  * author: clebeg
  */
-public interface ConfigurableListableBeanFactory extends BeanFactory {
+public interface ConfigurableListableBeanFactory extends ListableBeanFactory {
 
     /**
      * 通过 bean name 获取 bean 的定义。

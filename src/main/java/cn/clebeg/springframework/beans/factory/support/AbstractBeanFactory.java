@@ -8,6 +8,10 @@ import cn.clebeg.springframework.beans.factory.config.BeanDefinition;
  * @author clebegxie
  */
 abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+    @Override
+    public <T> T getBean(String beanName, Class<T> classOfType) throws BeansException {
+        return (T) getBean(beanName);
+    }
 
     @Override
     public Object getBean(String beanName) {

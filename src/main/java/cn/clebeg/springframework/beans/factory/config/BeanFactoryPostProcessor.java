@@ -1,6 +1,7 @@
 package cn.clebeg.springframework.beans.factory.config;
 
 import cn.clebeg.springframework.beans.BeansException;
+import cn.clebeg.springframework.beans.factory.ConfigurableListableBeanFactory;
 
 /**
  * 在 bean 初始化之前操作 bean definition 接口。
